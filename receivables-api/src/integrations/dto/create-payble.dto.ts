@@ -1,4 +1,4 @@
-import { IsDate, IsDecimal, IsNotEmpty } from 'class-validator';
+import { IsDate, IsDecimal, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreatePaybleDto {
   @IsNotEmpty()
@@ -10,5 +10,6 @@ export class CreatePaybleDto {
   emissionDate: Date;
 
   @IsNotEmpty()
-  assignor: number;
+  @IsString()
+  assignor: string;
 }

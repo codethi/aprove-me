@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Assignor {
+  document  String   @id
+  email     String   @unique
+  phone     String
+  name      String
+  paybles   Payble[]
+  createdAt DateTime @default(now())
+
+  @@map("assignors")
+}
+
+model Payble {
+  id           String   @id
+  value        Float
+  emissionDate DateTime
+  assignors    Assignor @relation(fields: [assignor], references: [document])
+  assignor     String
+  createdAt    DateTime @default(now())
+
+  @@map("paybles")
+}

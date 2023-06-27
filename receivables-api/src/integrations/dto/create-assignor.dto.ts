@@ -3,29 +3,29 @@ import {
   IsNotEmpty,
   IsPhoneNumber,
   IsString,
-  Max,
+  Length,
 } from 'class-validator';
 
 export class CreateAssignorDto {
   @IsNotEmpty()
   @IsString()
-  @Max(30)
+  @Length(1, 30)
   document: string;
 
   @IsNotEmpty()
   @IsString()
-  @Max(140)
+  @Length(5, 140)
   @IsEmail()
   email: string;
 
   @IsNotEmpty()
   @IsString()
-  @Max(20)
+  @Length(1, 20)
   @IsPhoneNumber()
   phone: string;
 
   @IsNotEmpty()
   @IsString()
-  @Max(140)
+  @Length(1, 140)
   name: string;
 }

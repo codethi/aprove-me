@@ -1,26 +1,19 @@
 import { Injectable } from '@nestjs/common';
-import { CreateIntegrationDto } from './dto/create-assignor.dto';
-import { UpdateIntegrationDto } from './dto/update-integration.dto';
+import { CreatePaybleDto } from './dto/create-payble.dto';
+import { CreateAssignorDto } from './dto/create-assignor.dto';
 
 @Injectable()
 export class IntegrationsService {
-  create(createIntegrationDto: CreateIntegrationDto) {
-    return 'This action adds a new integration';
+  createAssignor(createAssignorDto: CreateAssignorDto) {
+    throw new Error('Method not implemented.');
   }
-
-  findAll() {
-    return `This action returns all integrations`;
+  createPayble(createPaybleDto: CreatePaybleDto) {
+    throw new Error('Method not implemented.');
   }
-
-  findOne(id: number) {
-    return `This action returns a #${id} integration`;
+  findOneAssignor(arg0: number) {
+    throw new Error('Method not implemented.');
   }
-
-  update(id: number, updateIntegrationDto: UpdateIntegrationDto) {
-    return `This action updates a #${id} integration`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} integration`;
+  findOnePayble(arg0: number) {
+    throw new Error('Method not implemented.');
   }
 }

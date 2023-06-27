@@ -8,7 +8,6 @@ import {
   Delete,
 } from '@nestjs/common';
 import { IntegrationsService } from './integrations.service';
-import { UpdateIntegrationDto } from './dto/update-integration.dto';
 import { CreateAssignorDto } from './dto/create-assignor.dto';
 import { CreatePaybleDto } from './dto/create-payble.dto';
 
@@ -18,25 +17,30 @@ export class IntegrationsController {
 
   @Post('payable')
   createPayble(@Body() createPaybleDto: CreatePaybleDto) {
-    return this.integrationsService.create(createPaybleDto);
+    return this.integrationsService.createPayble(createPaybleDto);
   }
 
   @Post('assignor')
   createAssignor(@Body() createAssignorDto: CreateAssignorDto) {
-    return this.integrationsService.create(createAssignorDto);
+    return this.integrationsService.createAssignor(createAssignorDto);
   }
 
-  @Get()
+  @Get('payable/:id')
+  findOnePayble(@Param('id') id: string) {
+    return this.integrationsService.findOnePayble(+id);
+  }
+
+  @Get('assignor/:id')
+  findOneAssignor(@Param('id') id: string) {
+    return this.integrationsService.findOneAssignor(+id);
+  }
+
+  /* @Get()
   findAll() {
     return this.integrationsService.findAll();
-  }
+  } */
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.integrationsService.findOne(+id);
-  }
-
-  @Patch(':id')
+  /* @Patch(':id')
   update(
     @Param('id') id: string,
     @Body() updateIntegrationDto: UpdateIntegrationDto,
@@ -47,5 +51,5 @@ export class IntegrationsController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.integrationsService.remove(+id);
-  }
+  } */
 }
